@@ -59,6 +59,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'annotate'
+  gem "letter_opener"
+  gem "capistrano", "~> 3.10", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
