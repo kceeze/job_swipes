@@ -39,6 +39,9 @@ gem 'sass-rails', '>= 3.2'
 gem 'rubocop', require: false
 gem 'rails_best_practices'
 gem 'meta-tags'
+gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'devise_masquerade'
+gem 'cancancan', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
