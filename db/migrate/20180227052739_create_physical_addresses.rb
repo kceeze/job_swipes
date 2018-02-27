@@ -6,6 +6,7 @@ class CreatePhysicalAddresses < ActiveRecord::Migration[5.1]
     	t.string :state
     	t.string :zip
     	t.integer :worker_id
+    	t.timestamps null: false
     end
   end
 end

@@ -5,6 +5,7 @@ class CreateNames < ActiveRecord::Migration[5.1]
     	t.string :middle_name
     	t.string :last_name, null: false
     	t.integer :worker_id, null: false
+    	t.timestamps null: false
     end
   end
 end
