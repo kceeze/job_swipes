@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: job_swipes
-  password: nospace
+  password: password
   host: localhost
 
 development:
