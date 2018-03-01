@@ -9,7 +9,10 @@
   </head>
 
   <body>
+
+  <% if request.path != "/users/sign_in" && request.path != "/users/sign_up" %>
     <%= render "layouts/navigation" %>
+  <% end %>
   	<div class="alert alert-info"><%= notice %></div>
  	<div class="alert alert-warning"><%= alert %></div>
     <%= yield %>
