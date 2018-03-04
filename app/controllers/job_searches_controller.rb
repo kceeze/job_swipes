@@ -1,5 +1,6 @@
 class JobSearchesController < ApplicationController
-	#load_and_authorize_resource
+	before_action :load_worker_id
+	load_and_authorize_resource :worker
 	def index
 		@job_searches = JobSearch.where(worker_id: params[:worker_id])
 	end
@@ -39,5 +40,10 @@ class JobSearchesController < ApplicationController
 	def distance_param
 		params.require(:distance)
 	end
+
+	def load_worker_id
+		@worker_id =  params[:worker_id]
+	end
+
 
 end

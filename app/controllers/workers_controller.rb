@@ -1,6 +1,7 @@
 class WorkersController < ApplicationController
+	load_and_authorize_resource
 	def index
-		@workers = Workers.all
+		@workers = Worker.all
 	end
 
 	def new
@@ -19,6 +20,8 @@ class WorkersController < ApplicationController
 		@worker = Worker.new(worker_params)
 		@worker.user_id = current_user.id
 		if @worker.save
+		 	user = User.find(current_user.id)
+		 	user.give_role("worker")
 		  redirect_to worker_path(id: @worker.id)
 		else
 			@worker = Worker.new
