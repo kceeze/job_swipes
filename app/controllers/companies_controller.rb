@@ -4,8 +4,11 @@ class CompaniesController < ApplicationController
 
 	end
 
-	def new
+	def show
 
+	end
+
+	def new
     	@company = Company.new
 	    respond_to do |format|
 	      format.html 
@@ -16,7 +19,10 @@ class CompaniesController < ApplicationController
 	def create
 		  @company = Company.new(company_params)
 		  if @company.save
-		  	redirect_to companies_path
+		  	if(@company.doesnt_have_admin?)
+		  		@company.create_hr_rep(current_user)
+		  	end
+		  	redirect_to company_path(@company.id)
 		  else
 		  	render :new
 		  end
@@ -27,4 +33,6 @@ class CompaniesController < ApplicationController
 	def company_params
 		params.require(:company).permit(:name, :street, :city, :state,:zip)
 	end
+
+
 end

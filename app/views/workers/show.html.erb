@@ -1,0 +1,41 @@
+<div class="form-section">
+<h1>Welcome Job Seeker </h1>
+
+<h3>Names</h3>
+<% if @worker.names.present? %>
+	<% @worker.names.each do |name| %>
+			<div><%= name[:first_name] %> </div>
+			<div><%= name[:first_name] %> </div>
+	<% end %>
+<% end %>
+
+<h3>Addresses</h3>
+<% if @worker.physical_addresses.present? %>
+	<% @worker.physical_addresses.each do |address| %>
+			<div><%= address[:street] %> </div>
+			<div> <%= address[:city] %></div>
+			<div><%= address[:state] %> </div>
+			<div><%= address[:zip] %> </div>
+	<% end %>
+<% end %>
+
+<h3>Numbers</h3>
+<% if @worker.phone_numbers.present? %>
+	<% @worker.phone_numbers.each do |phone_number| %>
+			<div><%= phone_number[:number] %> </div>
+	<% end %>
+<% end %>
+
+<h3>Emails</h3>
+<% if @worker.email_addresses.present? %>
+	<% @worker.email_addresses.each do |email_address| %>
+			<div><%= email_address[:email] %></div>
+	<% end %>
+<% end %>
+
+
+<%= link_to "Job Search", worker_job_searches_path(params[:id]) %>
+
+
+	
+</div>

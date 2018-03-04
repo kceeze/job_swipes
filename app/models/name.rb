@@ -1,3 +1,3 @@
 class Name < ApplicationRecord
-	belongs_to :worker, dependent: :destroy
+	belongs_to :worker
 end	

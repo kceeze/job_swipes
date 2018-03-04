@@ -1,3 +1,3 @@
 class EmailAddress < ApplicationRecord
-	belongs_to :worker, dependent: :destroy
+	belongs_to :worker
 end	

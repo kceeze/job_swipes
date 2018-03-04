@@ -1,0 +1,11 @@
+<div style="margin-left:1em;">
+<h1>Welcome <%= current_user[:email] %></h1>
+	
+    <a href="<%= company_job_postings_path(params[:id]) %>">
+	<div style="background-color:#1ba1e2;width: 310px;height: 170px;">
+		<i class="fa fa-sticky-note fa-inverse" style="font-size:120px;margin-left:.8em"></i>
+		<h3 style="color:#fff;margin-left:.8em"> Job Postings </h3>
+	</div>	
+	</a>
+</div>
+

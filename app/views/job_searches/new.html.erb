@@ -1,0 +1,38 @@
+<%= form_for  [@worker, @job_search] do |f| %>	
+  <div class="field">
+      <%= f.label :search %>
+      <%= f.text_field :search_string %>
+  </div>
+
+  <div class="field"> 
+  		<%= f.label :distance %>
+  		<input type="text" id="distance-field"
+  </div>
+
+   <div class="actions">
+    <%= f.submit "Submit" %>
+    <%= hidden_field_tag 'worker_id', "#{@worker.id}" %>
+    <span class="submit-job-search">Search Jobs</span>
+  </div>
+ 
+  <% if @worker.physical_addresses.present? %>
+  	<h3>Your Address </h3>
+  	<% address = @worker.physical_addresses.first %>
+	<div>
+		<%= address[:street] %>	 
+	</div>
+
+	<div>
+		<%= address[:city] %>	 
+	</div>
+
+	<div>
+		<%= address[:state] %>	 
+	</div>
+
+	<div>
+		<%= address[:zip] %>	 
+	</div>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,23 @@
+
+<div> You searched for "<%= @job_search[:search_string] %>"</div>
+
+<br> </br>
+<h1> Locations </h1>
+<% if @companies.present? %>
+    <% @companies.each do |company| %> 
+        <div>Name: <%= company[:name] %> </div>
+        <div>Location: <%= company.address %> </div>
+
+
+    <% end %> 
+<% else %> 
+  No Companies found in radius. Please search again. 
+<% end %> 
+
+<div>
+<%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
+</div>
+
+<div>
+<%= link_to "Job Search History", worker_job_searches_path(params[:worker_id]) %>
+</div>
