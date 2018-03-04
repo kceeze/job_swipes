@@ -16,8 +16,9 @@ class Ability
     if user.worker? 
          worker_id = user.assocation_id("worker")
          can :manage, Worker, user_id: user.id
-    elsif user.hr_rep? 
-
+    elsif user.hr_rep?
+        company_id = user.assocation_id("hr_rep")
+        can :manage, Company, id: user.assocation_id("hr_rep") 
     else
 
     end

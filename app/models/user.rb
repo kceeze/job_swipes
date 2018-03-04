@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :workers
+  has_many :hr_reps
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -21,13 +22,14 @@ class User < ApplicationRecord
   	role == "guest"
 	end
 
-	def can_search_job
-		
-	end
 
 	def assocation_id(role)
 		if(self.worker?)
 			self.workers.first.id
+		elsif(self.hr_rep?)
+			self.hr_reps.first.company_id
 		end
 	end
+
+
 end

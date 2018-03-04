@@ -1,4 +1,5 @@
 class JobPostingsController < ApplicationController
+	load_and_authorize_resource :company
 	def index
 		@job_postings = JobPosting.where(company_id: params[:company_id])
 	end
