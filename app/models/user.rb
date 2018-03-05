@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
     def give_role(role)
-    	self.role = "worker"
+    	self.role = role
 		self.save
     end
 	 def hr_rep?	
