@@ -17,5 +17,5 @@
 //= require bootstrap-sprockets
 //= require dataTables/jquery.dataTables
 //= require workers.js
-//= require gmaps.js
+//= require job_search.js
 

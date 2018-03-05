@@ -5,7 +5,7 @@
   	<%= f.fields_for :names do |builder| %>
       <%= render "name_fields", :f => builder %>
     <% end %>
-    <%= add_name_fields("Add Name", f, :names) %> 
+    <%#= add_name_fields("Add Name", f, :names) %> 
   </div>
 
   
@@ -15,7 +15,7 @@
 	<%= f.fields_for :physical_addresses do |builder| %>
   	<%= render "physical_address_fields", :f => builder %>
 	<% end %>
-  <%= add_name_fields("Add Physical Address", f, :physical_addresses) %> 
+  <%#= add_name_fields("Add Physical Address", f, :physical_addresses) %> 
   </div>
     
   <div class="phone-nummbers-section">
@@ -23,7 +23,7 @@
   	<%= f.fields_for :phone_numbers do |builder| %>
     	<%= render "phone_number_fields", :f => builder %>
   	<% end %>
-    <%= add_name_fields("Add Phone Number", f, :phone_numbers) %>
+    <%#= add_name_fields("Add Phone Number", f, :phone_numbers) %>
   </div>
 
   <div class="email-addresses-section">
@@ -31,7 +31,7 @@
   	<%= f.fields_for :email_addresses do |builder| %>
     	<%= render "email_address_fields", :f => builder %>
   	<% end %>
-    <%= add_name_fields("Add Email Address", f, :email_addresses) %>
+    <%#= add_name_fields("Add Email Address", f, :email_addresses) %>
   </div>
 	
    <div class="actions">

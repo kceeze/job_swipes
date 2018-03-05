@@ -16,6 +16,8 @@ class Company < ApplicationRecord
 
 	def create_hr_rep(user)
 		HrRep.create(user_id: user.id, company_id: self.id, admin: true)
+		user.role = "hr_rep"
+		user.save
 	end	
 
 	def address

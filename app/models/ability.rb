@@ -20,7 +20,8 @@ class Ability
         company_id = user.assocation_id("hr_rep")
         can :manage, Company, id: user.assocation_id("hr_rep") 
     else
-
+        can :create, Worker
+        can :create, Company
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
