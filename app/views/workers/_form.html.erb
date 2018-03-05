@@ -1,6 +1,6 @@
 <%= form_for @worker do |f| %>
 	
-  <h5>Name</h5>
+  <h4>Name</h4>
   <div class="names-section">
   	<%= f.fields_for :names do |builder| %>
       <%= render "name_fields", :f => builder %>
@@ -10,7 +10,7 @@
 
   
 
-  <h5>Address</h5>
+  <h4>Address</h54
   <div class="physical-addresses-section">
 	<%= f.fields_for :physical_addresses do |builder| %>
   	<%= render "physical_address_fields", :f => builder %>
@@ -19,7 +19,7 @@
   </div>
     
   <div class="phone-nummbers-section">
-    <h5>Phone Number</h5>
+    <h4>Phone Number</h4>
   	<%= f.fields_for :phone_numbers do |builder| %>
     	<%= render "phone_number_fields", :f => builder %>
   	<% end %>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="email-addresses-section">
-    <h5>Email Address</h5>
+    <h4>Email Address</h4>
   	<%= f.fields_for :email_addresses do |builder| %>
     	<%= render "email_address_fields", :f => builder %>
   	<% end %>
@@ -35,7 +35,7 @@
   </div>
 	
    <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 	
 <% end %>

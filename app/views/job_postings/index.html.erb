@@ -29,11 +29,12 @@
 
 
     <a href="<%= new_company_job_posting_path(params[:company_id]) %>">
-		<div style="background-color:#1ba1e2;width: 310px;height: 170px;">
-			<i class="fa fa-sticky-note fa-inverse" style="font-size:120px;margin-left:.8em"></i>
-			<h3 style="color:#fff;margin-left:.8em"> New Job Posting </h3>
-		</div>	
-	</a>
+	   New Job Posting
+	 </a>
+
+  <a href="<%= company_path(params[:company_id]) %>">
+     Back
+   </a>
 </div>
 
 <script>

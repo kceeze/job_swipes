@@ -5,7 +5,7 @@ class Company < ApplicationRecord
 	geocoded_by :address
 
 	scope :join_jobs_nearby, lambda {joins("left outer join job_postings on job_postings.company_id = companies.id")}
-	scope :job_posting_search, lambda {|search_string| where("job_postings.subject = ?", search_string)}
+	scope :job_posting_search, lambda {|search_string| where("job_postings.subject like ?", "%#{search_string}%")}
 	def doesnt_have_admin?
 		if self.hr_reps.where(company_id: self.id).limit(1).present?
 			false

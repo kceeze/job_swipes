@@ -1,35 +1,37 @@
-<h1>Job Search History</h1> 
-<div>
-<%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
-</div>
+<div class="overall-spacing">
+  <h1>Job Search History</h1> 
+  <div>
+  <%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
+  </div>
 
 
 
-<% if @job_searches.present? %> 
-  <table id="job_searches" class="table">
-  <thead>
-    <tr>
-    	<th>Id</th>
-      <th>Search Term</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job_searches.each do |job_search| %>
+  <% if @job_searches.present? %> 
+    <table id="job_searches" class="table">
+    <thead>
       <tr>
-        <td><%= job_search[:id] %></td>
-        <td><%= job_search[:search_string] %></td>
+      	<th>Id</th>
+        <th>Search Term</th>
       </tr>
-    <% end %>
-  </tbody>
-  </table>
-<% else %> 
-	No Searches 
-<% end %>
+    </thead>
+    <tbody>
+      <% @job_searches.each do |job_search| %>
+        <tr>
+          <td><%= job_search[:id] %></td>
+          <td><%= job_search[:search_string] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% else %> 
+  	No Searches 
+  <% end %>
 
-<div>
-<%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
-</div>
+  <div>
+  <%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
+  </div>
 
-<div>
-<%= link_to "Go Back", worker_path(params[:worker_id]) %>
+  <div>
+  <%= link_to "Go Back", worker_path(params[:worker_id]) %>
+  </div>
 </div>

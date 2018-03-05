@@ -1,116 +1,99 @@
+<div class="map-spacing">
+  <div> You searched for "<%= @job_search[:search_string] %>" within a <%= @distance %> radius</div>
 
-<style type="text/css">
-     #map {
-        width: 500px;
-        height: 500px;
-      }
+  <br> </br>
+  <% if @companies.present? %>
+      <div class="job-search-map-container">  
+        <div class="job-search-locations">
+            <h1> Locations </h1>
+            <% @companies.each do |company| %> 
+                <div class="get-company-map-location">
+                  Name: <%= company[:name] %> 
+                  <input class="company-address" type="hidden" value="<%= company.address %>" name="addresses[]"> 
+                </div>
+                <div>Location: <%= company.address %> </div>
 
-      .job-search-locations
-      {
-        float:left;
-        margin-right:1em;
-      }
+                <br><br>
+            <% end %> 
+        </div>
 
-      .job-search-map
-      {
-        float:left;
-      }
-    </style>
+        </div class="job-search-map">
+           <div id="map"></div>
+        </div>
 
-<div> You searched for "<%= @job_search[:search_string] %>" within a <%= @distance %> radius</div>
-
-<br> </br>
-<% if @companies.present? %>
-    <div class="job-search-map-container">  
-      <div class="job-search-locations">
-          <h1> Locations </h1>
-          <% @companies.each do |company| %> 
-              <div class="get-company-map-location">
-                Name: <%= company[:name] %> 
-                <input class="company-address" type="hidden" value="<%= company.address %>" name="addresses[]"> 
-              </div>
-              <div>Location: <%= company.address %> </div>
-
-              <br><br>
-          <% end %> 
       </div>
 
-      </div class="job-search-map">
-         <div id="map"></div>
-      </div>
-
-    </div>
 
 
+      <script>
+      var map;
+  var geocoder; 
+  var gmarkers = [];
+  var infowindow; 
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });
 
-    <script>
-    var map;
-var geocoder; 
-var gmarkers = [];
-var infowindow; 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
+    infowindow = new google.maps.InfoWindow({
+      content: ""
+    });
 
-  infowindow = new google.maps.InfoWindow({
-    content: ""
-  });
+    geocoder = new google.maps.Geocoder();
+  }
 
-  geocoder = new google.maps.Geocoder();
-}
-
-function geocodeAddress(geocoder, resultsMap, address, label_number) {
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === 'OK') {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location,
-        label: label_number,
-      });
-      marker.addListener('click', function() {
-        infowindow = new google.maps.InfoWindow({
-        content: "" + results[0].formatted_address + ""
+  function geocodeAddress(geocoder, resultsMap, address, label_number) {
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location,
+          label: label_number,
         });
-        infowindow.open(map, marker);
-      });
-      gmarkers.push(marker);
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-});
-}
+        marker.addListener('click', function() {
+          infowindow = new google.maps.InfoWindow({
+          content: "" + results[0].formatted_address + ""
+          });
+          infowindow.open(map, marker);
+        });
+        gmarkers.push(marker);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+  });
+  }
 
-function removeMarkers(){
-for(i = 0; i< gmarkers.length; i++)
-{
-  gmarkers[i].setMap(null);
-}
-}
-      $("body").on("click", ".get-company-map-location", function(){
-          var address = $(this).find(".company-address").val();
-          geocodeAddress(geocoder, map, address, "" );
-      });
-      setTimeout(function(){ 
-            <% if @companies.present? %>
-               <% @companies.each do |company| %>
-                      geocodeAddress(geocoder, map,  "<%= company.address %>", "<%= company.name %>" );
-               <% end %> 
-            <% end %>
-      }, 2000);
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['geolocation_key'] %>&callback=initMap"
-    async defer></script>
-<% else %> 
-  No Companies found in radius. Please search again. 
-<% end %> 
+  function removeMarkers(){
+  for(i = 0; i< gmarkers.length; i++)
+  {
+    gmarkers[i].setMap(null);
+  }
+  }
+        $("body").on("click", ".get-company-map-location", function(){
+            var address = $(this).find(".company-address").val();
+            geocodeAddress(geocoder, map, address, "" );
+        });
+        setTimeout(function(){ 
+              <% if @companies.present? %>
+                 <% @companies.each do |company| %>
+                        geocodeAddress(geocoder, map,  "<%= company.address %>", "<%= company.name %>" );
+                 <% end %> 
+              <% end %>
+        }, 2000);
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['geolocation_key'] %>&callback=initMap"
+      async defer></script>
+  <% else %> 
+    No Companies found in radius. Please search again. 
+  <% end %> 
 
-<div>
-<%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %>
-</div>
+  <div class="move-buttons">
+    <%= link_to "Search Jobs", new_worker_job_search_path(params[:worker_id]) %> 
+     |
+    <%= link_to "Job Search History", worker_job_searches_path(params[:worker_id]) %>
+  </div>
 
-<div>
-<%= link_to "Job Search History", worker_job_searches_path(params[:worker_id]) %>
+
 </div>

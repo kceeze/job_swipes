@@ -1,4 +1,6 @@
 <div style="margin-left:1em;">
     <div> Subject: <%= @job_posting[:subject] %> </div>
     <div>Description: <%= @job_posting[:description] %></div>
+
+    <%= link_to "Back", company_job_postings_path(params[:company_id]) %>
 </div>

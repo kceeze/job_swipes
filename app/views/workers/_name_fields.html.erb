@@ -1,12 +1,12 @@
 <div class="worker-name-fields">
-	 <div class="field">
+	 <div class="form-group">
 	      <%= f.label :first_name %>
-	      <%= f.text_field :first_name %>
+	      <%= f.text_field :first_name, class: "form-control" %>
 	  </div>
 
-	  <div class="field">
+	  <div class="form-group">
 	      <%= f.label :last_name %>
-	      <%= f.text_field :last_name %>
+	      <%= f.text_field :last_name, class: "form-control" %>
 	  </div>
 
 	  <%= f.hidden_field :_destroy %> 

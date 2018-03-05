@@ -1,20 +1,47 @@
-<h1 style="margin-left:1em"> Registration </h1>
+<style>
+.overall-spacing-two
+{
+	margin: auto;
+    width: 50%;
+    border: 3px solid #428bca;
+ 	height:500px;
+}
+
+.registration-buttons
+{
+	float:left;
+	width:45%;
+	margin-left:1em
+}
+
+.space-registration
+{
+	margin: auto;
+	width:50%;
+}
+
+</style>
+
+<div class="overall-spacing-two">
+
+	<h1 class="space-registration"> Registration </h1>
 
 
-<div>
+	<div>
 
-	<div style="float:left; width:45%;margin-left:1em">
-		<h3>Company <h3>
-		<%= link_to new_company_path do %>
-   			<%= image_tag "company.jpg", size: "190x190"%>
-		<% end %>
-	</div>
-	
+		<div class="registration-buttons">
+			<h3>Company <h3>
+			<%= link_to new_company_path do %>
+	   			<%= image_tag "company.jpg", size: "190x190"%>
+			<% end %>
+		</div>
+		
 
-	<div style="float:left;width:45%">
-		<h3>Worker</h3>
-		<%= link_to new_worker_path do %>
-   			<%= image_tag "worker.jpg", size: "190x190" %>
-		<% end %>
+		<div class="registration-buttons">
+			<h3>Worker</h3>
+			<%= link_to new_worker_path do %>
+	   			<%= image_tag "worker.jpg", size: "190x190" %>
+			<% end %>
+		</div>
 	</div>
 </div>
