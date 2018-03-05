@@ -59,6 +59,10 @@ group :development, :test do
   gem 'brakeman', :require => false
   gem 'sidekiq'
   gem 'byebug'
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'fakefs', :require => 'fakefs/safe'
 
 end
 

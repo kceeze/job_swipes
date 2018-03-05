@@ -1,3 +1,3 @@
-class JobSearch < ApplicationRecord
+class JobSearch < ApplicationRecord 
 	belongs_to :worker
 end	
